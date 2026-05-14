@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { signInWithEmailAndPassword } from "firebase/auth"
-import { auth } from "../firebase"
+import { auth } from "@/firebase"
 
-import { GoogleSignIn } from "./GoogleSignIn"
-import { ForgotPasswordForm } from "./ForgotPasswordForm"
+import { GoogleSignIn } from "../auth/GoogleSignIn"
+import { ForgotPasswordForm } from "../auth/ForgotPasswordForm"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -102,10 +102,10 @@ export default function LoginForm({
 									Login
 								</Button>
 								<GoogleSignIn />
-								<FieldDescription className="text-center">
+								{/* <FieldDescription className="text-center">
 									Don't have an account?{" "}
-									<a href="/sign-up">Sign up</a>
-								</FieldDescription>
+									<a href="/">Sign up</a>
+								</FieldDescription> */}
 							</Field>
 						</FieldGroup>
 					</form>

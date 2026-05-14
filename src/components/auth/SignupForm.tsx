@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
-import { auth } from "../firebase"
+import { auth } from "@/firebase"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -97,10 +97,14 @@ export default function SignupForm({
 					<form onSubmit={handleRegister}>
 						<FieldGroup>
 							<Field>
-								<FieldLabel htmlFor="name">Full Name</FieldLabel>
+								<FieldLabel htmlFor="name">
+									Full Name
+								</FieldLabel>
 								<Input
 									value={displayName}
-									onChange={(e) => setDisplayName(e.target.value)}
+									onChange={(e) =>
+										setDisplayName(e.target.value)
+									}
 									id="name"
 									type="text"
 									placeholder="John Doe"
@@ -118,15 +122,19 @@ export default function SignupForm({
 									required
 								/>
 								<FieldDescription>
-									We&apos;ll use this to contact you. We will not
-									share your email with anyone else.
+									We&apos;ll use this to contact you. We will
+									not share your email with anyone else.
 								</FieldDescription>
 							</Field>
 							<Field>
-								<FieldLabel htmlFor="password">Password</FieldLabel>
+								<FieldLabel htmlFor="password">
+									Password
+								</FieldLabel>
 								<Input
 									value={password}
-									onChange={(e) => setPassword(e.target.value)}
+									onChange={(e) =>
+										setPassword(e.target.value)
+									}
 									id="password"
 									type="password"
 									required
@@ -154,21 +162,21 @@ export default function SignupForm({
 							</Field>
 							<FieldGroup>
 								<Button
+									className="btn"
 									type="submit"
 									disabled={loading || !matchedPassword}
 								>
-									{loading ? "Creating account..." : "Sign up"}
+									{loading
+										? "Creating account..."
+										: "Sign up"}
 								</Button>
-								<Button
-									variant="outline"
-									type="button"
-								>
+								<Button variant="outline" type="button">
 									Sign up with Google
 								</Button>
-								<FieldDescription className="px-6 text-center">
+								{/* <FieldDescription className="px-6 text-center">
 									Already have an account?{" "}
 									<a href="/sign-in">Sign in</a>
-								</FieldDescription>
+								</FieldDescription> */}
 							</FieldGroup>
 						</FieldGroup>
 					</form>

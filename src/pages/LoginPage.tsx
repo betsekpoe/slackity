@@ -1,11 +1,10 @@
 import { useState } from "react"
-import { useParams } from "react-router"
 
-import LoginForm from "@/components/login-form"
-import SignupForm from "@/components/signup-form"
+import LoginForm from "@/components/auth/LoginForm"
+import SignupForm from "@/components/auth/SignupForm"
 
 export default function LoginPage() {
-	const [isLogin, setIsLogin] = useState(false)
+	const [isLogin, setIsLogin] = useState(true)
 
 	return (
 		<div className="flex flex-col gap-4 items-center justify-center min-h-screen">
@@ -18,7 +17,7 @@ export default function LoginPage() {
 						Don't have an account?{" "}
 						<button
 							onClick={() => setIsLogin(false)}
-							className="underline text-blue-600 hover:text-blue-800"
+							className="underline text-(--primary) hover:text-blue-800"
 						>
 							Sign up
 						</button>
@@ -27,7 +26,16 @@ export default function LoginPage() {
 			) : (
 				<div className="w-full max-w-md">
 					<SignupForm />
-				</div>  
+					<p className="text-center text-sm mt-4">
+						Already have an account?{" "}
+						<button
+							onClick={() => setIsLogin(true)}
+							className="underline text-(--primary) hover:text-blue-800"
+						>
+							Log in
+						</button>
+					</p>
+				</div>
 			)}
 		</div>
 	)

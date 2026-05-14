@@ -17,7 +17,7 @@ export default function LoginPage() {
 						Don't have an account?{" "}
 						<button
 							onClick={() => setIsLogin(false)}
-							className="underline text-(--primary) hover:text-blue-800"
+							className="underline text-primary hover:text-blue-800"
 						>
 							Sign up
 						</button>
@@ -30,7 +30,7 @@ export default function LoginPage() {
 						Already have an account?{" "}
 						<button
 							onClick={() => setIsLogin(true)}
-							className="underline text-(--primary) hover:text-blue-800"
+							className="underline text-primary hover:text-blue-800"
 						>
 							Log in
 						</button>

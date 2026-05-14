@@ -128,3 +128,7 @@
     @apply font-sans;
     }
 }
+
+.btn {
+  @apply cursor-pointer;
+}

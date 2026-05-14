@@ -1,3 +1,10 @@
+import { useState } from "react"
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "../firebase"
+
+import { GoogleSignIn } from "./GoogleSignIn"
+import { ForgotPasswordForm } from "./ForgotPasswordForm"
+
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -19,6 +26,24 @@ export default function LoginForm({
 	className,
 	...props
 }: React.ComponentProps<"div">) {
+	const [email, setEmail] = useState("")
+	const [password, setPassword] = useState("")
+	const [showReset, setShowReset] = useState(false)
+
+	const handleLogin = async (e: React.FormEvent) => {
+		e.preventDefault()
+		try {
+			const userCredential = await signInWithEmailAndPassword(
+				auth,
+				email,
+				password,
+			)
+			console.log("User logged in:", userCredential.user)
+		} catch (error) {
+			console.error("Error logging in:", error)
+		}
+	}
+
 	return (
 		<div className={cn("flex flex-col gap-6 p-6", className)} {...props}>
 			<Card>
@@ -29,11 +54,13 @@ export default function LoginForm({
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
-					<form>
+					<form onSubmit={handleLogin}>
 						<FieldGroup>
 							<Field>
 								<FieldLabel htmlFor="email">Email</FieldLabel>
 								<Input
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
 									id="email"
 									type="email"
 									placeholder="m@example.com"
@@ -45,23 +72,39 @@ export default function LoginForm({
 									<FieldLabel htmlFor="password">
 										Password
 									</FieldLabel>
-									<a
-										href="#"
-										className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-									>
-										Forgot your password?
-									</a>
+									{showReset ? (
+										<ForgotPasswordForm />
+									) : (
+										<a
+											href="#"
+											onClick={(e) => {
+												e.preventDefault()
+												setShowReset(true)
+											}}
+											className="text-sm underline-offset-4 hover:underline"
+										>
+											Forgot your password?
+										</a>
+									)}
 								</div>
-								<Input id="password" type="password" required />
+								<Input
+									value={password}
+									onChange={(e) =>
+										setPassword(e.target.value)
+									}
+									id="password"
+									type="password"
+									required
+								/>
 							</Field>
 							<Field>
-								<Button type="submit">Login</Button>
-								<Button variant="outline" type="button">
-									Login with Google
+								<Button className="btn" type="submit">
+									Login
 								</Button>
+								<GoogleSignIn />
 								<FieldDescription className="text-center">
-									Don&apos;t have an account?{" "}
-									<a href="#">Sign up</a>
+									Don't have an account?{" "}
+									<a href="/sign-up">Sign up</a>
 								</FieldDescription>
 							</Field>
 						</FieldGroup>

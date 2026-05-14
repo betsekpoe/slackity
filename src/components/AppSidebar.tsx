@@ -1,6 +1,6 @@
 import { useAuth } from "@/hooks/useAuth"
 import Logout from "@/components/auth/Logout"
-import { Users } from "lucide-react"
+// import { Users } from "lucide-react"
 
 import {
 	Sidebar,
@@ -8,7 +8,7 @@ import {
 	SidebarContent,
 	SidebarFooter,
 } from "@/components/ui/sidebar"
-import { Button } from "./ui/button"
+// import { Button } from "./ui/button"
 
 export function AppSidebar() {
 	const { user } = useAuth()

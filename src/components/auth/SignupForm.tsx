@@ -17,6 +17,7 @@ import {
 	FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { GoogleSignIn } from "./GoogleSignIn"
 
 export default function SignupForm({
 	className,
@@ -170,9 +171,7 @@ export default function SignupForm({
 										? "Creating account..."
 										: "Sign up"}
 								</Button>
-								<Button variant="outline" type="button">
-									Sign up with Google
-								</Button>
+								<GoogleSignIn action="Sign up" />
 								{/* <FieldDescription className="px-6 text-center">
 									Already have an account?{" "}
 									<a href="/sign-in">Sign in</a>

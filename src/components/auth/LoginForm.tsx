@@ -100,7 +100,7 @@ export default function LoginForm({
 								<Button className="btn" type="submit">
 									Login
 								</Button>
-								<GoogleSignIn />
+								<GoogleSignIn action="Sign in" />
 								{/* <FieldDescription className="text-center">
 									Don't have an account?{" "}
 									<a href="/">Sign up</a>

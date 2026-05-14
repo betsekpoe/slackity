@@ -2,7 +2,7 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 import { auth } from "@/firebase"
 import { Button } from "@/components/ui/button"
 
-export function GoogleSignIn() {
+export function GoogleSignIn({ action }: { action: string }) {
 	const handleGoogleSignIn = async () => {
 		try {
 			const provider = new GoogleAuthProvider()
@@ -20,7 +20,7 @@ export function GoogleSignIn() {
 			onClick={handleGoogleSignIn}
 			className="w-full"
 		>
-			Sign in with Google
+			{action} with Google
 		</Button>
 	)
 }

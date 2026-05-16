@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Building2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -9,16 +10,29 @@ import {
 	EmptyMedia,
 	EmptyTitle,
 } from "@/components/ui/empty"
+import CreateWorkspace from "@/components/CreateWorkspace"
 
 export default function EmptyDemo() {
+	const [showCreateForm, setShowCreateForm] = useState(false)
+
 	const handleCreateWorkspace = () => {
-		// Logic to create a new workspace
-		console.log("Create Workspace clicked")
+		setShowCreateForm(true)
 	}
 
 	const handleJoinWorkspace = () => {
 		// Logic to join an existing workspace
 		console.log("Join Workspace clicked")
+	}
+
+	if (showCreateForm) {
+		return (
+			<CreateWorkspace
+				onSuccess={() => {
+					// Refresh page or redirect to new workspace
+					window.location.reload()
+				}}
+			/>
+		)
 	}
 
 	return (
